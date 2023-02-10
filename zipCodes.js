@@ -3,7 +3,7 @@ const { parse } = require('csv-parse');
 
 const freqTable = {};
 
-fs.createReadStream('./data/Group01.csv')
+fs.createReadStream('./data/test.csv')
   .pipe(parse({ delimiter: ',', from_line: 2 }))
   .on('data', (row) => {
     const zip = row[row.length - 1];
@@ -17,4 +17,7 @@ fs.createReadStream('./data/Group01.csv')
   .on('end', () => {
     console.log('🥳 Parsing Complete');
     console.log(freqTable);
+    console.log(
+      `We have users in ${Object.keys(freqTable).length} different zip codes!`
+    );
   });
