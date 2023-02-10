@@ -2,14 +2,20 @@ const fs = require('fs');
 const { parse } = require('csv-parse');
 
 const freqTable = {};
+const users = new Set();
 
 fs.createReadStream('./data/test.csv')
   .pipe(parse({ delimiter: ',', from_line: 2 }))
   .on('data', (row) => {
+    const userId = row[0];
     const zip = row[row.length - 1];
 
-    if (!(zip in freqTable)) freqTable[zip] = 0;
-    freqTable[zip]++;
+    if (!users.has(userId)) {
+      if (!(zip in freqTable)) freqTable[zip] = 0;
+      freqTable[zip]++;
+
+      users.add(userId);
+    }
   })
   .on('error', (error) => {
     console.log('😵‍💫', error.message);
@@ -18,6 +24,8 @@ fs.createReadStream('./data/test.csv')
     console.log('🥳 Parsing Complete');
     console.log(freqTable);
     console.log(
-      `We have users in ${Object.keys(freqTable).length} different zip codes!`
+      `We have ${users.size} users in ${
+        Object.keys(freqTable).length
+      } different zip codes!`
     );
   });
