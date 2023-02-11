@@ -12,6 +12,7 @@ const parseSingleCsv = (filePath) => {
         const userId = row[0];
         const zip = row[row.length - 1];
 
+        // only increment zip code frequency if we haven't seen this user before
         if (!users.has(userId)) {
           if (!(zip in freqTable)) freqTable[zip] = 0;
           freqTable[zip]++;
