@@ -1,6 +1,6 @@
-## Summary
+# Summary
 
-# Process
+## Process
 
 This project analyzes the data from the CSV files located in the data directory. The table below lists all zip codes and how many times they are found.
 
@@ -8,13 +8,13 @@ The data includes zip codes with different lengths and configurations. Since it 
 
 In order to prevent duplicate addresses, I kept track of 'Customer ID' and did not increment the frequency table if the customer's information was already viewed. It is possible that this resulted in fewer zip codes, as it may be possible that the same customer has two addresses associated with their ID.
 
-# Output
+## Output
 
 The CSV files provided (Groups 1 - 10) have 43,613 users in 11,187 different zip codes!
 
-┌───────────┬────────┐
+
 │ Zip Code │ Freq │
-├───────────┼────────┤
+|----------|---------|
 │ 0 │ 66 │
 │ 5 │ 1 │
 │ 7 │ 1 │
