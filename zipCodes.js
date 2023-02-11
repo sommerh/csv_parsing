@@ -33,9 +33,9 @@ const addToTable = (...path) => {
   const paths = [...path];
 
   Promise.all(paths.map(parseSingleCsv)).then(() => {
-    console.log(freqTable);
+    console.table(freqTable);
     console.log(
-      `We have ${users.size} users in ${
+      `There are ${users.size} users in ${
         Object.keys(freqTable).length
       } different zip codes!`
     );
